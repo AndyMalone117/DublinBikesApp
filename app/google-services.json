@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "123983995745",
+    "firebase_url": "https://mobileappdevdbs.firebaseio.com",
+    "project_id": "mobileappdevdbs",
+    "storage_bucket": "mobileappdevdbs.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:123983995745:android:c6993fb773dd8a6a",
+        "android_client_info": {
+          "package_name": "com.andrewmalone.assignmentapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "123983995745-06qgequtkl1qb9mrco85n6nq1cbvmicc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDo4BdCF-rsKI5Oy8tdXeqtpRJ9nrLx0Fo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "123983995745-06qgequtkl1qb9mrco85n6nq1cbvmicc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

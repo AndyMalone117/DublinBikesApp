@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="90dp"
+    android:background="@color/tw__composer_black"
+    android:padding="4dp">
+
+
+    <LinearLayout
+        android:layout_weight="5.18"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="@color/cardview_light_background"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:id="@+id/station_item_title"
+            android:textAppearance="@android:style/TextAppearance.Material.Large"
+            android:textSize="18sp" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/station_item_subtitle" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="0.23">
+
+        <TextView
+        android:text="Available Bikes:"
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:id="@+id/textView5"
+        android:background="@android:color/holo_green_dark" />
+
+        <TextView
+        android:text="TextView"
+        android:layout_width="match_parent"
+        android:layout_height="26dp"
+        android:id="@+id/station_item_bikes"
+        android:textAppearance="@android:style/TextAppearance.Material.Large"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/textView5"
+        android:textSize="15sp"
+        android:background="@android:color/holo_green_dark"
+            android:gravity="center" />
+
+        <TextView
+            android:text="Parking Slots:"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView3"
+            android:layout_below="@+id/station_item_bikes"
+            android:layout_alignParentStart="true"
+            android:background="@android:color/holo_orange_light" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:id="@+id/station_item_parking"
+            android:textAppearance="@android:style/TextAppearance.Material.Large"
+            android:layout_alignBaseline="@+id/textView3"
+            android:layout_alignBottom="@+id/textView3"
+            android:layout_toEndOf="@+id/textView3"
+            android:layout_alignStart="@+id/station_item_bikes"
+            android:textSize="15sp"
+            android:background="@android:color/holo_orange_light"
+            android:gravity="center" />
+
+
+    </LinearLayout>
+</LinearLayout>
