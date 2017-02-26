@@ -47,9 +47,12 @@ public class ListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_view);
+        //calling the run() method
         run();
 
+        //button takes you to the map view
         Button btnGoToMap = (Button) findViewById(R.id.btnMapView);
+        //button takes you to the profile view
         Button btnViewProfile = (Button) findViewById(R.id.btnViewProfile);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.bikeListView);
@@ -157,7 +160,6 @@ public class ListActivity extends AppCompatActivity {
         }
     }
 
-
     public void run() {
         OkHttpClient client = new OkHttpClient();
 
@@ -210,9 +212,7 @@ public class ListActivity extends AppCompatActivity {
 //                bikeListView.setAdapter(arrayAdapter);
 
             }
-
         });
-
     }
 
     void updateAdapter() {
@@ -223,25 +223,10 @@ public class ListActivity extends AppCompatActivity {
         });
     }
 
+    //Writing the json data to file
     private void writeToFile(String data, Context context) {
-//                try {
-//                    OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput("stationArrayList.json", Context.MODE_PRIVATE));
-//                    outputStreamWriter.write(data);
-//                    outputStreamWriter.close();
-//                }
-//                catch (IOException e) {
-//                    Log.e("Exception", "File write failed: " + e.toString());
-//                }
-
         String filename = "stationArrayList.json";
         FileOutputStream outputStream;
-
-//        File file = null;
-//        try {
-//            file = File.createTempFile("stationArrayList.json", null, context.getCacheDir());
-//        } catch (IOException e) {
-//            // Error while creating file
-//        }
 
         try {
             outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
@@ -250,9 +235,5 @@ public class ListActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
     }
-
-
 }

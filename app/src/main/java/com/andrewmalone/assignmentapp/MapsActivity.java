@@ -54,7 +54,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         JSONObject stationJson;
 
         try {
-            JSONArray jsonArray = new JSONArray(result); //Json array object made from string that was passed into it.
+            JSONArray jsonArray = new JSONArray(result); //Json array object made from string that
+            // was passed into it.
             // Process each result in json array, decode and convert to business object
             for (int i = 0; i < jsonArray.length(); i++) {
                 try {
@@ -67,11 +68,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 Station station = new Station();
                 station.fromJson(stationJson);
                 if (station != null) {
-                    //This is where we add a particular station into the dataset that backups the array adapter
+                    //This is where we add a particular station into the dataset that backups the
+                    // array adapter
                     stations.add(station);
                     LatLng stationPosition = new LatLng(station.getLat(), station.getLng());
 
-                    mMap.addMarker(new MarkerOptions().position(stationPosition).title(station.getName()).snippet("Available Bikes: " + station.getAvailableBikes() + " | " + "Parking Spaces: " + station.getAvailableParking()));
+                    mMap.addMarker(new MarkerOptions().position(stationPosition).
+                            title(station.getName()).snippet
+                            ("Available Bikes: " + station.getAvailableBikes()
+                                    + " | " + "Parking Spaces: " +
+                            station.getAvailableParking()));
 
                 }
             }
@@ -93,7 +99,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
 
         // Add a marker in Dublin and move the camera
         LatLng Dublin = new LatLng(53.3498, -6.2603);

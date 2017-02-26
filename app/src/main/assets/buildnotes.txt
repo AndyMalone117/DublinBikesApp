@@ -39,3 +39,8 @@ information in the Maps activity also. I came across a 'RecyclerView' which appe
 what I wanted. I wrote the json information to file as 'stationArrayList.json' into 'Utilities' and
 created an adapter for my recycler view called 'StationAdapter' and create an empty station item in
 the view holder.
+
+Dev Cycle 6:
+I called the same Json information into the Map activity with ParseJsonResponse method and added
+markers for the positions on the map which are determines by lat and lng from the API. I then began
+to style the app by adding a colour scheme and fixing the layout of the activities.
