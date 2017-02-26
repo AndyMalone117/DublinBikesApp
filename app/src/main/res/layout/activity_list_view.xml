@@ -10,18 +10,18 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.andrewmalone.assignmentapp.ListActivity"
     android:orientation="vertical"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:background="@android:color/holo_blue_light">
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="384dp"
-        android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:scrollbars="vertical"
         android:id="@+id/bikeListView"
-        android:background="@color/authui_colorPrimary"
         tools:listitem="@layout/station_item"
-        android:layout_weight="1.05" />
+        android:layout_weight="1.05"
+        android:foregroundGravity="center" />
 
     <Button
         android:text="Map View"
