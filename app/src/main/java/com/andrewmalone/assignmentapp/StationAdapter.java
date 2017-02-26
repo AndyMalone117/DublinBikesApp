@@ -47,7 +47,7 @@ public class StationAdapter extends RecyclerView.Adapter<StationAdapter.ViewHold
         Station station = stations.get(position);
 
         viewHolder.mTitleView.setText(station.getName());
-        viewHolder.mSubTitleView.setText(station.getAddress());
+//        viewHolder.mSubTitleView.setText(station.getAddress());
         viewHolder.mNumberView.setText(station.getAvailableBikes() + "");
         viewHolder.mSubNumberView.setText(station.getAvailableParking() + "");
 
@@ -62,7 +62,7 @@ public class StationAdapter extends RecyclerView.Adapter<StationAdapter.ViewHold
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         public TextView mTitleView;
-        public TextView mSubTitleView;
+//        public TextView mSubTitleView;
         public TextView mNumberView;
         public TextView mSubNumberView;
 
@@ -70,7 +70,7 @@ public class StationAdapter extends RecyclerView.Adapter<StationAdapter.ViewHold
             super(view);
 //            mTextView = v;
             mTitleView = (TextView) view.findViewById(R.id.station_item_title);
-            mSubTitleView = (TextView) view.findViewById(R.id.station_item_subtitle);
+//            mSubTitleView = (TextView) view.findViewById(R.id.station_item_subtitle);
             mNumberView = (TextView) view.findViewById(R.id.station_item_bikes);
             mSubNumberView = (TextView) view.findViewById(R.id.station_item_parking);
 

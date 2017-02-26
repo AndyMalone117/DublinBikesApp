@@ -4,51 +4,49 @@
     android:id="@+id/activity_list_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.andrewmalone.assignmentapp.ListActivity"
     android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
     android:weightSum="1"
-    android:background="@android:color/holo_blue_light">
+    tools:context="com.andrewmalone.assignmentapp.ListActivity">
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/bikeListView"
         android:layout_width="match_parent"
         android:layout_height="384dp"
         android:layout_alignParentStart="true"
-        android:scrollbars="vertical"
-        android:id="@+id/bikeListView"
-        tools:listitem="@layout/station_item"
         android:layout_weight="1.05"
-        android:foregroundGravity="center" />
+        android:foregroundGravity="center"
+        android:scrollbars="vertical"
+        tools:listitem="@layout/station_item" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-        android:text="View Profile"
         android:layout_height="wrap_content"
-        android:onClick="btnMapProfile"
-        android:orientation="horizontal"
-        android:id="@+id/btnViewProfile"
-        android:backgroundTint="@color/colorAccent"
-        android:layout_width="match_parent"
-        android:layout_weight=".5"
-        android:layout_gravity="center_horizontal" />
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin">
 
         <Button
-            android:text="Map View"
-            android:layout_height="wrap_content"
-            android:onClick="btnMapClick"
-            android:textAlignment="center"
-            android:id="@+id/btnMapView"
-            android:orientation="horizontal"
-            android:backgroundTint="@color/colorAccent"
-            android:gravity="center"
+            android:id="@+id/btnViewProfile"
+            style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight=".5"
+            android:onClick="btnMapProfile"
+            android:orientation="horizontal"
+            android:text="View Profile" />
+
+        <Button
+            android:id="@+id/btnMapView"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:layout_weight=".50"
-            android:layout_gravity="center_horizontal" />
+            android:gravity="center"
+            android:onClick="btnMapClick"
+            android:orientation="horizontal"
+            android:text="Map View"
+            android:textAlignment="center" />
     </LinearLayout>
 </LinearLayout>
