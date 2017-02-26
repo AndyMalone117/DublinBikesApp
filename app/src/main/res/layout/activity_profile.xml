@@ -40,8 +40,9 @@
         android:layout_above="@+id/textView4"
         android:layout_gravity="center"
         android:onClick="btnClick"
-        android:background="@android:color/holo_blue_bright"
-        style="@android:style/Widget.Material.Button.Borderless" />
+        android:background="?attr/colorAccent"
+        style="@android:style/Widget.Material.Button.Borderless"
+        android:textColor="@color/com_facebook_button_background_color_focused" />
 
     <TextView
         android:text="City:"
@@ -81,9 +82,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btnGoToList"
-        android:background="@android:color/holo_blue_bright"
+        android:background="?attr/colorAccent"
         android:onClick="onClick"
-        style="@android:style/Widget.Material.Button.Borderless" />
+        style="@android:style/Widget.Material.Button.Borderless"
+        android:textColor="@color/com_facebook_button_background_color_focused" />
 
 
 </LinearLayout>

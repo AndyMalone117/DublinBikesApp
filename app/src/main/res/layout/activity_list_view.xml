@@ -9,7 +9,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.andrewmalone.assignmentapp.ListActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:weightSum="1">
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
@@ -19,20 +20,24 @@
         android:scrollbars="vertical"
         android:id="@+id/bikeListView"
         android:background="@color/authui_colorPrimary"
-        tools:listitem="@layout/station_item" />
+        tools:listitem="@layout/station_item"
+        android:layout_weight="1.05" />
 
     <Button
         android:text="Map View"
-        android:layout_width="352dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="btnMapClick"
         android:textAlignment="center"
-        android:id="@+id/btnMapView" />
+        android:id="@+id/btnMapView"
+        android:backgroundTint="@color/colorAccent"
+        android:gravity="center" />
 
     <Button
         android:text="View Profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="btnMapProfile"
-        android:id="@+id/btnViewProfile" />
+        android:id="@+id/btnViewProfile"
+        android:backgroundTint="@color/colorAccent" />
 </LinearLayout>

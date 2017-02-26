@@ -11,7 +11,8 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:background="@color/cardview_light_background"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:backgroundTint="@color/colorPrimary">
 
 
         <TextView
@@ -20,13 +21,15 @@
             android:layout_height="55dp"
             android:id="@+id/station_item_title"
             android:textAppearance="@android:style/TextAppearance.Material.Large"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textColor="@color/cardview_light_background" />
 
         <TextView
             android:text="TextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/station_item_subtitle" />
+            android:id="@+id/station_item_subtitle"
+            android:textColor="@color/cardview_light_background" />
 
 
     </LinearLayout>
@@ -42,7 +45,8 @@
         android:layout_width="match_parent"
         android:layout_height="15dp"
         android:id="@+id/textView5"
-        android:background="@android:color/holo_green_dark" />
+        android:background="@color/colorAccent"
+            android:textColor="@color/cardview_light_background" />
 
         <TextView
         android:text="TextView"
@@ -54,7 +58,9 @@
         android:layout_toEndOf="@+id/textView5"
         android:textSize="15sp"
         android:background="@android:color/holo_green_dark"
-            android:gravity="center" />
+            android:gravity="center"
+            android:backgroundTint="@color/colorAccent"
+            android:textColor="@color/cardview_light_background" />
 
         <TextView
             android:text="Parking Slots:"
@@ -63,7 +69,8 @@
             android:id="@+id/textView3"
             android:layout_below="@+id/station_item_bikes"
             android:layout_alignParentStart="true"
-            android:background="@android:color/holo_orange_light" />
+            android:background="@android:color/holo_orange_light"
+            android:textColor="@color/cardview_light_background" />
 
         <TextView
             android:text="TextView"
@@ -77,7 +84,8 @@
             android:layout_alignStart="@+id/station_item_bikes"
             android:textSize="15sp"
             android:background="@android:color/holo_orange_light"
-            android:gravity="center" />
+            android:gravity="center"
+            android:textColor="@color/cardview_light_background" />
 
 
     </LinearLayout>
