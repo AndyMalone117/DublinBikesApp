@@ -55,6 +55,7 @@ public class ListActivity extends AppCompatActivity {
         //button takes you to the profile view
         Button btnViewProfile = (Button) findViewById(R.id.btnViewProfile);
 
+
         mRecyclerView = (RecyclerView) findViewById(R.id.bikeListView);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
@@ -223,8 +224,9 @@ public class ListActivity extends AppCompatActivity {
         });
     }
 
+
     //Writing the json data to file
-    private void writeToFile(String data, Context context) {
+    public void writeToFile(String data, Context context) {
         String filename = "stationArrayList.json";
         FileOutputStream outputStream;
 

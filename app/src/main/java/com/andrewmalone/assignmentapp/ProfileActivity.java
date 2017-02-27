@@ -3,21 +3,19 @@ package com.andrewmalone.assignmentapp;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.MediaStore;
-import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -26,20 +24,19 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import static android.R.attr.bitmap;
-import static com.andrewmalone.assignmentapp.R.id.btnGoToList;
-import static com.andrewmalone.assignmentapp.R.id.textView;
+import static android.R.attr.data;
+
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -62,12 +59,20 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        FirebaseUser user =  FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user.getPhotoUrl() != null) {
             downloadUrl = user.getPhotoUrl();
         }
 
+        ContextWrapper cw = new ContextWrapper(getApplicationContext());
+        // path to /data/data/yourapp/app_data/imageDir/profile.jpg
+        File directory = cw.getDir("image_dir", Context.MODE_PRIVATE);
+
+        String pathabs = directory.getAbsolutePath();
+        loadImageFromStorage(pathabs);
+
         imgView = (ImageView) findViewById(R.id.imgView);
+
 
         Button btnGoToList = (Button) findViewById(R.id.btnGoToList);
 
@@ -85,6 +90,7 @@ public class ProfileActivity extends AppCompatActivity {
 //                        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
 
                         startActivityForResult(cameraIntent, CAMERA_REQUEST);
+
                     }
 
                 }
@@ -143,19 +149,22 @@ public class ProfileActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
-            Bitmap imageBitmap = (Bitmap) data.getExtras().get("data");
+            final Bitmap imageBitmap = (Bitmap) data.getExtras().get("data");
+            saveToInternalStorage(imageBitmap);
+
             imgView.setImageBitmap(imageBitmap);
+
             FirebaseStorage storage = FirebaseStorage.getInstance();
             // Create a storage reference from our app
             StorageReference storageRef = storage.getReference();
 
-// Create a reference to "mountains.jpg"
+            // Create a reference to "mountains.jpg"
             StorageReference imageRef = storageRef.child("mountains.jpg");
 
-// Create a reference to 'images/mountains.jpg'
+            // Create a reference to 'images/mountains.jpg'
             StorageReference mountainImagesRef = storageRef.child("images/mountains.jpg");
 
-// While the file names are the same, the references point to different files
+            // While the file names are the same, the references point to different files
             imageRef.getName().equals(mountainImagesRef.getName());    // true
             imageRef.getPath().equals(mountainImagesRef.getPath());    // false
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -175,18 +184,17 @@ public class ProfileActivity extends AppCompatActivity {
                     downloadUrl = taskSnapshot.getDownloadUrl();
                     Log.d("", downloadUrl.toString());
 
-
-
                 }
             });
         }
     }
-    private String saveToInternalStorage(Bitmap bitmapImage){
+
+    private String saveToInternalStorage(Bitmap bitmapImage) {
         ContextWrapper cw = new ContextWrapper(getApplicationContext());
-        // path to /data/data/yourapp/app_data/imageDir
-        File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
+        // path to /data/data/yourapp/app_data/imageDir/profile.jpg
+        File directory = cw.getDir("image_dir", Context.MODE_PRIVATE);
         // Create imageDir
-        File mypath=new File(directory,"profile.jpg");
+        File mypath = new File(directory, "profile.jpg");
 
         FileOutputStream fos = null;
         try {
@@ -204,4 +212,22 @@ public class ProfileActivity extends AppCompatActivity {
         }
         return directory.getAbsolutePath();
     }
+
+    private void loadImageFromStorage(String path)
+    {
+
+        try {
+            File f=new File(path, "profile.jpg");
+            Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
+            ImageView img=(ImageView)findViewById(R.id.imgView);
+            img.setImageBitmap(b);
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+
+    }
+
+
 }

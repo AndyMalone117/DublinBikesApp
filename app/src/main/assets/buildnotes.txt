@@ -44,3 +44,9 @@ Dev Cycle 6:
 I called the same Json information into the Map activity with ParseJsonResponse method and added
 markers for the positions on the map which are determines by lat and lng from the API. I then began
 to style the app by adding a colour scheme and fixing the layout of the activities.
+
+Dev Cycle 7:
+App styled using the styles.xml with a colour scheme I resourced online. I also did not like the
+messy appearance of my list view, so I researched and attempted to use the google cards appearance
+for each station in the list view.
+(https://developer.android.com/training/material/lists-cards.html#CardView).
