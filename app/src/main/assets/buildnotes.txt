@@ -50,3 +50,9 @@ App styled using the styles.xml with a colour scheme I resourced online. I also 
 messy appearance of my list view, so I researched and attempted to use the google cards appearance
 for each station in the list view.
 (https://developer.android.com/training/material/lists-cards.html#CardView).
+
+Dev Cycle 8:
+http://stackoverflow.com/questions/17674634/saving-and-reading-bitmaps-images-from-internal-memory-in-android
+The completed objective today was to write an image to internal storage so that it was present when
+a user navigates between activities and also if they leave the app and re-enter it. The images are
+also being saved to the firebase database.
