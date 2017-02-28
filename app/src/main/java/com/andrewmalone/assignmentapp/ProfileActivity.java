@@ -14,7 +14,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -36,6 +38,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import static android.R.attr.data;
+import static android.R.attr.name;
 
 
 public class ProfileActivity extends AppCompatActivity {
@@ -43,6 +46,10 @@ public class ProfileActivity extends AppCompatActivity {
     private static final int SELECTED_IMG = 1;
     ImageView imgView;
     Button btn;
+    EditText name;
+
+    FirebaseUser user;
+
 
     private static String[] PERMISSIONS_STORAGE = {android.Manifest.permission.READ_EXTERNAL_STORAGE,
             android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
@@ -59,11 +66,19 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        name = (EditText) findViewById(R.id.nameText);
+
         if (user.getPhotoUrl() != null) {
             downloadUrl = user.getPhotoUrl();
         }
 
+        if (user.getDisplayName() != null) {
+            name.setText(user.getDisplayName());
+        }
+
+
+        //loading the image from internal storage
         ContextWrapper cw = new ContextWrapper(getApplicationContext());
         // path to /data/data/yourapp/app_data/imageDir/profile.jpg
         File directory = cw.getDir("image_dir", Context.MODE_PRIVATE);
@@ -73,13 +88,11 @@ public class ProfileActivity extends AppCompatActivity {
 
         imgView = (ImageView) findViewById(R.id.imgView);
 
-
         Button btnGoToList = (Button) findViewById(R.id.btnGoToList);
 
-        btn = (Button) findViewById(R.id.selectPictureButton);
 
-        //Check if the user has a photo on line
-        //If the user has not got a photo online take a picture and save locally and remotely
+
+        btn = (Button) findViewById(R.id.selectPictureButton);
 
         btn.setOnClickListener(
                 new Button.OnClickListener() {
@@ -101,14 +114,12 @@ public class ProfileActivity extends AppCompatActivity {
                     @Override
                     public void onClick(final View view) {
                         if (downloadUrl == null) {
-                            Toast.makeText(ProfileActivity.this, "Please add a picture", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ProfileActivity.this, "Please add a picture.", Toast.LENGTH_SHORT).show();
                             return;
                         }
 
-                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
                         UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                                .setDisplayName("Andy")
+                                .setDisplayName(name.getText().toString())
                                 .setPhotoUri(Uri.parse(downloadUrl.toString()))
                                 .build();
 
@@ -125,12 +136,19 @@ public class ProfileActivity extends AppCompatActivity {
                                         }
                                     }
                                 });
-
                     }
                 }
         );
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
+
+        name.setText(user.getDisplayName());
+    }
 
     public static Intent createIntent(Context context) {
         Intent myIntent = new Intent(context, ProfileActivity.class);
@@ -143,6 +161,7 @@ public class ProfileActivity extends AppCompatActivity {
         Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(i, SELECTED_IMG);
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

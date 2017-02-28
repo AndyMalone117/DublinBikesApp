@@ -1,8 +1,9 @@
 Dev cycle 1:
 The first job was to decide on what the application will do, what API I will implement and how will
-I meet all the requirements
-within the application which was chosen.
-I decided on using the Dublin Bikes API.
+I meet all the requirements within the application which was chosen. I decided on using the Dublin
+Bikes API.
+
+----------
 
 Dev Cycle 2:
 The objective of this coding session was to create the Activities which will be required for the
@@ -15,6 +16,8 @@ Profile Activity,
 List Activity,
 Maps Activity.
 
+----------
+
 Dev Cycle 3:
 The objective of this session was to create the ability for the user to register/login. I researched
 how to do it from scratch but decided that the best way to add this feature would be to
@@ -23,10 +26,14 @@ I read the documentation on https://firebase.google.com/docs/auth/ and added the
 project. I was shocked at how quickly and effortlessly the tool was added to my project and that the
 information was being stored on my firebase console on https://firebase.google.com/.
 
+----------
+
 Dev Cycle 4:
 I created a simple profile layout on the profile activity(Photo,location description and 'About Me')
 and read the android docs on how to implement usage of the camera native feature and store the image
 in an ImageView https://developer.android.com/training/camera/photobasics.html.
+
+----------
 
 Dev Cycle 5:
 I registered on https://developer.jcdecaux.com/ for an API key for Dublin Bikes. Once I received the
@@ -40,10 +47,14 @@ what I wanted. I wrote the json information to file as 'stationArrayList.json' i
 created an adapter for my recycler view called 'StationAdapter' and create an empty station item in
 the view holder.
 
+----------
+
 Dev Cycle 6:
 I called the same Json information into the Map activity with ParseJsonResponse method and added
 markers for the positions on the map which are determines by lat and lng from the API. I then began
 to style the app by adding a colour scheme and fixing the layout of the activities.
+
+----------
 
 Dev Cycle 7:
 App styled using the styles.xml with a colour scheme I resourced online. I also did not like the
@@ -51,8 +62,12 @@ messy appearance of my list view, so I researched and attempted to use the googl
 for each station in the list view.
 (https://developer.android.com/training/material/lists-cards.html#CardView).
 
+----------
+
 Dev Cycle 8:
 http://stackoverflow.com/questions/17674634/saving-and-reading-bitmaps-images-from-internal-memory-in-android
-The completed objective today was to write an image to internal storage so that it was present when
-a user navigates between activities and also if they leave the app and re-enter it. The images are
-also being saved to the firebase database.
+
+The completed objective today was to write an image to internal storage so that the image was
+present when in the profile activity when a user navigates between activities and also if they leave
+the app and re-enter it. The images are also being saved to the firebase database.
+
