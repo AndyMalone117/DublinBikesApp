@@ -133,6 +133,11 @@ public class ListActivity extends AppCompatActivity {
         */
     }
 
+    public static Intent createIntent(Context context) {
+        Intent myIntent = new Intent(context, ListActivity.class);
+        return myIntent;
+    }
+
 
     public void parseJsonResponse(final String result) {
 

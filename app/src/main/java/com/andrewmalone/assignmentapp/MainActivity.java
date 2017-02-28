@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         if (auth.getCurrentUser() != null) {
             // already signed in
-            startActivity(ProfileActivity.createIntent(this));
+            startActivity(ListActivity.createIntent(this));
         } else {
             // not signed in
 
