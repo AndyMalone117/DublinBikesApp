@@ -113,16 +113,18 @@ public class ProfileActivity extends AppCompatActivity {
                 new Button.OnClickListener() {
                     @Override
                     public void onClick(final View view) {
-                        if (downloadUrl == null) {
-                            Toast.makeText(ProfileActivity.this, "Please add a picture.", Toast.LENGTH_SHORT).show();
-                            return;
-                        }
+//                        if (downloadUrl == null) {
+//                            Toast.makeText(ProfileActivity.this, "Please add a picture.", Toast.LENGTH_SHORT).show();
+//                            return;
+//                        }
 
+                        //Setting the users Display name and image
                         UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                                 .setDisplayName(name.getText().toString())
                                 .setPhotoUri(Uri.parse(downloadUrl.toString()))
                                 .build();
 
+                        //updating the users profile
                         user.updateProfile(profileUpdates)
                                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
@@ -173,6 +175,7 @@ public class ProfileActivity extends AppCompatActivity {
 
             imgView.setImageBitmap(imageBitmap);
 
+            //Saving image to firebase storage referenced from firebase docs.
             FirebaseStorage storage = FirebaseStorage.getInstance();
             // Create a storage reference from our app
             StorageReference storageRef = storage.getReference();

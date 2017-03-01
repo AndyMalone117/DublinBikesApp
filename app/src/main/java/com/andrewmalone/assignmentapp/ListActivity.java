@@ -35,9 +35,6 @@ import okhttp3.Response;
 
 public class ListActivity extends AppCompatActivity {
 
-//    public ListView stationsListView;
-//    public ArrayAdapter arrayAdapter;
-
     private RecyclerView mRecyclerView;
     private StationAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -138,7 +135,6 @@ public class ListActivity extends AppCompatActivity {
         return myIntent;
     }
 
-
     public void parseJsonResponse(final String result) {
 
         JSONObject stationJson;
@@ -153,7 +149,6 @@ public class ListActivity extends AppCompatActivity {
                     e.printStackTrace();
                     continue;
                 }
-
                 Station station = new Station();
                 station.fromJson(stationJson);
                 if (station != null) {
@@ -168,7 +163,6 @@ public class ListActivity extends AppCompatActivity {
 
     public void run() {
         OkHttpClient client = new OkHttpClient();
-
 
         Request request = new Request.Builder().url("https://api.jcdecaux.com/vls/v1/stations?contract=Dublin&apiKey=bd691853cab2e508f00c0fea04bd3599d1ba42e5")
                 .get()
@@ -186,37 +180,6 @@ public class ListActivity extends AppCompatActivity {
                 parseJsonResponse(result); // Pass Json string into parseJsonResponse methods
                 writeToFile(result, getApplicationContext());
                 updateAdapter();
-
-
-                //               try {
-                //                   JSONArray jsonObject = new JSONArray(result);
-//                    Stations stationArrayList = new Stations();
-//                    stationArrayList.fromJson(jsonObject);
-//                    stationArrayList.stationArrayList.get(0);
-//                    try(BufferedWriter writer= new BufferedWriter(new FileWriter("bikes.txt"))){
-//                    writer.write(stationArrayList.toString());
-//                    writer.flush();
-//                    }
-//                    catch (IOException e){
-//                        e.printStackTrace();
-//                    }
-
-                //            } catch (JSONException e) {
-//                    e.printStackTrace();
-                //            }
-
-                //              Log.d("",result);
-
-//                ListView bikeListView = (ListView) findViewById(R.id.bikeListView);
-//
-//                final ArrayList<String> myBikes = new ArrayList<String>(asList(result));
-//
-//
-//
-//                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, myBikes);
-//
-//                bikeListView.setAdapter(arrayAdapter);
-
             }
         });
     }
@@ -234,7 +197,6 @@ public class ListActivity extends AppCompatActivity {
     public void writeToFile(String data, Context context) {
         String filename = "stationArrayList.json";
         FileOutputStream outputStream;
-
         try {
             outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
             outputStream.write(data.getBytes());
