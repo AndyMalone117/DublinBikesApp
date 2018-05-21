@@ -6,6 +6,11 @@
     <string name="unknown_error">An unknown error has occurred</string>
     <string name="unknown_sign_in_response">Unknown sign in response</string>
     <string name="title_activity_maps">Map</string>
+    <string name="search_title">Search...</string>
+    <string name="title_activity_favourites">favourites</string>
+    <string name="refresh">Refresh</string>
+    <string name="map_view">Map View</string>
+    <string name="favourites">Favourites</string>
 
 
 </resources>

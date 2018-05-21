@@ -1,10 +1,7 @@
 package com.andrewmalone.assignmentapp;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
 
 /**
  * Created by Andy on 08/02/2017.
@@ -40,9 +37,7 @@ public class Station {
         return this.availableParking;
     }
 
-
     public double getLat() {
-
         return lat;
     }
 
@@ -62,7 +57,6 @@ public class Station {
             this.availableParking = jsonObject.getInt("available_bike_stands");
             this.lat = jsonObject.getJSONObject("position").getDouble("lat");
             this.lng = jsonObject.getJSONObject("position").getDouble("lng");
-
 
         } catch (JSONException e) {
             e.printStackTrace();

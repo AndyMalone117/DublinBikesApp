@@ -1,10 +1,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.andrewmalone.assignmentapp.MainActivity">
+    tools:context="com.andrewmalone.assignmentapp.ListActivity">
+
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/refresh"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+        android:icon="@drawable/ic_refresh_black_24dp"
+        android:title="@string/refresh"
+        app:showAsAction="collapseActionView|ifRoom" />
+
+    <item
+        android:id="@+id/search"
+        android:title="Search..."
+        android:visible="true"
+        android:icon="@drawable/ic_search_black_24dp"
+        app:showAsAction="collapseActionView|always"
+        app:actionViewClass="android.support.v7.widget.SearchView" />
 </menu>
